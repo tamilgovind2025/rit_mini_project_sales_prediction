@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Segmentation App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Customer Segmentation & Purchase Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Annual Income (k$)</label>
+        <input type="number" name="income" required>
+
+        <label>Spending Score (1-100)</label>
+        <input type="number" name="spending" required>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+    {% if prediction_text %}
+
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+            <h3>Cluster: {{ cluster }}</h3>
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
